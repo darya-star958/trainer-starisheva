@@ -1,0 +1,16 @@
+const TASKS = [
+  { id: 1, subject: "informatics", topic: "Инверсия", level: 1, title: "Инверсия", statement: "Вычислите ¬A, если A = Истина (1).", answer: { value: 0, unit: "", tolerance: 0 }, hint: "Инверсия меняет значение на противоположное.", solution: "¬1 = 0", image: "/img/and.png" },
+  { id: 2, subject: "informatics", topic: "Конъюнкция", level: 1, title: "Конъюнкция", statement: "Вычислите A & B, если A = 1, B = 0.", answer: { value: 0, unit: "", tolerance: 0 }, hint: "Конъюнкция истинна, только если оба операнда истинны.", solution: "1 & 0 = 0", image: "/img/logic.png" },
+  { id: 3, subject: "informatics", topic: "Дизъюнкция", level: 2, title: "Дизъюнкция", statement: "Вычислите A | B, если A = 0, B = 1.", answer: { value: 1, unit: "", tolerance: 0 }, hint: "Дизъюнкция ложна только при 0 и 0.", solution: "0 | 1 = 1", image: "/img/table.png" },
+  { id: 4, subject: "informatics", topic: "Импликация", level: 3, title: "Импликация", statement: "Вычислите A -> B, если A = 1, B = 0.", answer: { value: 0, unit: "", tolerance: 0 }, hint: "Импликация ложна только в случае 1 -> 0.", solution: "1 -> 0 = 0" },
+  { id: 5, subject: "informatics", topic: "Таблицы истинности", level: 2, title: "Строки", statement: "Сколько строк в таблице истинности для 3 переменных?", answer: { value: 8, unit: "шт.", tolerance: 0 }, hint: "Количество строк = 2^n.", solution: "2^3 = 8" },
+  { id: 6, subject: "informatics", topic: "Инверсия", level: 1, title: "Двойная инверсия", statement: "Вычислите ¬(¬A), если A = 0.", answer: { value: 0, unit: "", tolerance: 0 }, hint: "Двойное отрицание возвращает исходное значение.", solution: "¬(¬0) = 0" },
+  { id: 7, subject: "informatics", topic: "Конъюнкция", level: 2, title: "Конъюнкция (текст)", statement: "Чему равно A & B, если A=1, B=1? Введите 'истина' или '1'.", answer: { type: "text", value: "1" }, hint: "Оба истинны.", solution: "1 & 1 = 1" },
+  { id: 8, subject: "informatics", topic: "Дизъюнкция", level: 1, title: "Дизъюнкция", statement: "Вычислите A | B, если A = 0, B = 0.", answer: { value: 0, unit: "", tolerance: 0 }, hint: "ИЛИ ложно только при 0, 0.", solution: "0 | 0 = 0" },
+  { id: 9, subject: "informatics", topic: "Импликация", level: 3, title: "Импликация (истина)", statement: "Вычислите A -> B, если A = 0, B = 0.", answer: { value: 1, unit: "", tolerance: 0 }, hint: "Из лжи следует всё, что угодно.", solution: "0 -> 0 = 1" },
+  { id: 10, subject: "informatics", topic: "Таблицы истинности", level: 3, title: "Столбцы", statement: "Сколько столбцов в таблице истинности для 2 переменных и 1 операции?", answer: { value: 3, unit: "шт.", tolerance: 0 }, hint: "Переменные + результат.", solution: "A, B, F = 3" },
+  { id: 11, subject: "informatics", topic: "Инверсия", level: 2, title: "Инверсия", statement: "Вычислите ¬A, если A = 0.", answer: { value: 1, unit: "", tolerance: 0 }, hint: "¬0 = 1.", solution: "¬0 = 1" },
+  { id: 12, subject: "informatics", topic: "Конъюнкция", level: 3, title: "Конъюнкция", statement: "Вычислите A & B, если A = 0, B = 1.", answer: { value: 0, unit: "", tolerance: 0 }, hint: "Хотя бы один 0 дает 0.", solution: "0 & 1 = 0" },
+];
+
+export default TASKS;

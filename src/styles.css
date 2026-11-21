@@ -1,0 +1,193 @@
+:root {
+    --accent: #1a5276;
+    --ok: #1e8449;
+    --bad: #c0392b;
+    --bg: #ffffff;
+    --fg: #1c2833;
+    --card: #f4f6f7;
+    --line: rgba(0, 0, 0, 0.12);
+    --radius: 12px;
+    --gap: 1rem;
+    --nav-width: 240px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0 auto;
+    padding: 0 15px;
+    font-family: system-ui, "Segoe UI", sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "nav" "main" "footer";
+    gap: var(--gap);
+}
+
+@media (min-width: 900px) {
+    body { max-width: 1200px; padding: 0 20px; }
+    .layout {
+        grid-template-columns: var(--nav-width) 1fr;
+        grid-template-areas: "header header" "nav main" "footer footer";
+        align-items: start;
+    }
+}
+
+header { grid-area: header; display: flex; justify-content: space-between; align-items: center; background: var(--accent); color: #fff; padding: 1rem; border-radius: var(--radius); }
+nav { grid-area: nav; }
+main { grid-area: main; }
+footer { grid-area: footer; }
+
+header h1 {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+h1, h2, h3 { color: var(--accent); }
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 900px) {
+    nav ul {
+        position: sticky;
+        top: 100px;
+        background: var(--card);
+        padding: 1rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+}
+
+nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background: rgba(26, 82, 118, 0.1);
+    text-decoration: none;
+}
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; border-left: 5px solid var(--accent); position: relative; }
+.card img { max-width: 100%; height: auto; }
+
+.answer-form { display: flex; flex-wrap: wrap; gap: 10px; border: none; padding: 0; margin-top: 10px;}
+.answer-form label { flex: 0 0 auto; }
+.answer-form input { flex: 1 1 100px; padding: 8px; border: 1px solid var(--line); border-radius: 4px; }
+.answer-form button { padding: 8px 16px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; }
+
+.result.correct { color: var(--ok); font-weight: bold; }
+.result.wrong { color: var(--bad); font-weight: bold; }
+
+/* --- ТЕМНАЯ ТЕМА --- */
+[data-theme="dark"] {
+    --bg: #14181c;
+    --fg: #e8eef2;
+    --card: #1e252b;
+    --line: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] header { background: #1a5276; }
+[data-theme="dark"] .card p { color: #aeb6bf; }
+
+/* --- ПРОГРЕСС-БАР --- */
+progress {
+    border-radius: 10px;
+    background: var(--line);
+    width: 100%;
+    height: 20px;
+}
+progress::-webkit-progress-bar {
+    background: var(--line);
+    border-radius: 10px;
+}
+progress::-webkit-progress-value {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* --- ТАБЛИЦА --- */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { padding: 10px; border: 1px solid var(--line); text-align: left; }
+thead th { background: var(--accent); color: white; }
+
+/* --- ПРОЧЕЕ --- */
+.to-top { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; z-index: 100; }
+.skip-link { position: absolute; left: -9999px; }
+
+/* --- СТИЛИ ДЛЯ REACT-КОМПОНЕНТА TASKHEADER --- */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.task-header h3 {
+  margin: 0;
+  padding-right: 40px;
+}
+
+.level-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* --- КНОПКИ В СЕКЦИИ РЕЗУЛЬТАТОВ --- */
+#stats button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- ИСПРАВЛЕНИЕ КОНТРАСТА (для axe DevTools) --- */
+/* Делаем текст кнопок и ссылок более темным для лучшего контраста */
+button,
+.filters button,
+#stats button,
+.answer-form button {
+    color: #ffffff; /* Белый текст на синем фоне */
+    background-color: var(--accent); /* Синий фон (контраст 4.5:1) */
+}
+
+details summary {
+    color: #333333; /* Темно-серый текст */
+}
+
+/* Активное меню (исправлен цвет для контраста) */
+nav a.active {
+  font-weight: bold;
+  color: #1a5276; /* Темно-синий цвет, проходит по контрасту */
+  text-decoration: underline;
+}
